@@ -1,5 +1,7 @@
 # bloom_filter
 
+[![Build Status](https://travis-ci.org/kseo/bloom_filter.svg?branch=master)](https://travis-ci.org/kseo/bloom_filter)
+
 A stand-alone Bloom filter implementation written in Dart inspired by
 [Java-BloomFilter][Java-BloomFilter].
 
