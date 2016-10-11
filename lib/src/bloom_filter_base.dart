@@ -91,14 +91,29 @@ class BloomFilter<E> {
   }
 }
 
-List<int> _digest(List<int> data) => md5.convert(data).bytes;
+List<int> _digest(int salt, List<int> data) {
+  var result;
+  Sink<Digest> sink =
+      new ChunkedConversionSink.withCallback((List<Digest> digest) {
+    result = digest.single.bytes;
+  });
+
+  md5.startChunkedConversion(sink)
+    ..add([salt])
+    ..add(data)
+    ..close();
+
+  return result;
+}
 
 List<int> _createHashes(List<int> data, int hashes) {
   List<int> result = new List<int>(hashes);
 
   int k = 0;
+  int salt = 0;
   while (k < hashes) {
-    List<int> digest = _digest(data);
+    List<int> digest = _digest(salt, data);
+    salt++;
 
     for (var i = 0; i < digest.length / 4 && k < hashes; i++) {
       int h = 0;
