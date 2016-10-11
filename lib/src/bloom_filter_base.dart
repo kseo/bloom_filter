@@ -41,7 +41,7 @@ class BloomFilter<E> {
 
   BloomFilter._internal(double c, int n, int k)
       : _expectedNumOfElements = n,
-        _k = n,
+        _k = k,
         _bitVectorSize = (c * n).ceil(),
         _numOfAddedElements = 0,
         _bitVector = new BitVector((c * n).ceil());
