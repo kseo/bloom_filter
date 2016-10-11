@@ -7,8 +7,10 @@ homepage: https://github.com/kseo/bloom_filter
 environment:
   sdk: '>=1.0.0 <2.0.0'
 
-#dependencies:
-#  lib_name: any
+dependencies:
+  bit_vector: ^0.2.0
+  crypto: ^2.0.1
 
 dev_dependencies:
   test: '>=0.12.0 <0.13.0'
+  uuid: ^0.5.3
