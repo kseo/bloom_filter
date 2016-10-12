@@ -15,7 +15,7 @@ void main() {
       for (var i = 0; i < 100; i++) {
         String val = uuid.v4().toString();
         b.add(val);
-        expect(b.contains(val), isTrue);
+        expect(b.mightContain(val), isTrue);
       }
     });
 
@@ -24,10 +24,10 @@ void main() {
 
       for (var i = 0; i < 10; i++) {
         b.add(i.toRadixString(2));
-        expect(b.contains(i.toRadixString(2)), isTrue);
+        expect(b.mightContain(i.toRadixString(2)), isTrue);
       }
 
-      expect(b.contains(uuid.v4()), isFalse);
+      expect(b.mightContain(uuid.v4()), isFalse);
     });
   });
 }

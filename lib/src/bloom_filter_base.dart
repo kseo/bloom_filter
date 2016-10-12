@@ -64,8 +64,8 @@ class BloomFilter<E> {
   }
 
   /// Returns true if the element could have been inserted into the Bloom
-  /// filter.
-  bool contains(E element) {
+  /// filter, false if this is definitely not the case.
+  bool mightContain(E element) {
     List<int> hashes = _createHashes(UTF8.encode(element.toString()), _k);
     for (int hash in hashes) {
       if (!_bitVector.get((hash % _bitVectorSize).abs())) {
@@ -79,7 +79,7 @@ class BloomFilter<E> {
   /// filter.
   bool containsAll(Iterable<E> elements) {
     for (E element in elements) {
-      if (!contains(element)) return false;
+      if (!mightContain(element)) return false;
     }
     return true;
   }
