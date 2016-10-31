@@ -92,7 +92,7 @@ class BloomFilter<E> {
 }
 
 List<int> _digest(int salt, List<int> data) {
-  var result;
+  List<int> result;
   Sink<Digest> sink =
       new ChunkedConversionSink.withCallback((List<Digest> digest) {
     result = digest.single.bytes;
