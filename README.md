@@ -40,10 +40,10 @@ bloomFilter.add("foo");
 ```
 
 To check whether an element has been stored in the Bloom filter, use the
-`contains` method.
+`mightContain` method.
 
 ```dart
-bloomFilter.contains("foo"); // returns true
+bloomFilter.mightContain("foo"); // returns true
 ```
 
 Keep in mind that the accuracy of this method depends on the false positive
@@ -66,14 +66,14 @@ main() {
 
   bloomFilter.add("foo");
 
-  if (bloomFilter.contains("foo")) {
+  if (bloomFilter.mightContain("foo")) {
     // Always returns true
     print("BloomFilter contains foo!");
     print(
         "Probability of a false positive: ${bloomFilter.expectedFalsePositiveProbability}");
   }
 
-  if (bloomFilter.contains("bar")) {
+  if (bloomFilter.mightContain("bar")) {
     // Should return false, but could return true
     print("There was a false positive.");
   }
