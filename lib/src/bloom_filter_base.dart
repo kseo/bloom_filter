@@ -16,17 +16,6 @@ class BloomFilter<E> {
   int _numOfAddedElements;
   final int _k;
 
-  /// The number of elements added to the Bloom filter after is was constructed
-  /// or after clear() was called.
-  int get length => _numOfAddedElements;
-
-  /// The probability of a false positive given the expected number of inserted
-  /// elements.
-  double get expectedFalsePositiveProbability {
-    // (1 - e^(-k * n / m)) ^ k
-    return pow(1 - exp((-_k * _expectedNumOfElements / _bitVectorSize)), _k);
-  }
-
   /// Constructs an empty Bloom filter with a given false positive probability.
   /// The number of bits per element and the number of hash functions is
   /// estimated to match the false positive probability.
@@ -45,6 +34,17 @@ class BloomFilter<E> {
         _bitVectorSize = (c * n).ceil(),
         _numOfAddedElements = 0,
         _bitVector = new BitVector((c * n).ceil());
+
+  /// The number of elements added to the Bloom filter after is was constructed
+  /// or after clear() was called.
+  int get length => _numOfAddedElements;
+
+  /// The probability of a false positive given the expected number of inserted
+  /// elements.
+  double get expectedFalsePositiveProbability {
+    // (1 - e^(-k * n / m)) ^ k
+    return pow(1 - exp((-_k * _expectedNumOfElements / _bitVectorSize)), _k);
+  }
 
   /// Adds an element to the Bloom filter. The output from the element's
   /// toString() method is used as input to the hash functions.

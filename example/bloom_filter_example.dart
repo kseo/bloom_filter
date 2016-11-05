@@ -3,7 +3,7 @@
 
 import 'package:bloom_filter/bloom_filter.dart';
 
-main() {
+void main() {
   double falsePositiveProbability = 0.1;
   int expectedSize = 100;
 

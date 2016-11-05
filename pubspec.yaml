@@ -1,6 +1,6 @@
 name: bloom_filter
 description: A stand-alone Bloom filter implementation written in Dart.
-version: 0.2.0
+version: 0.2.0+1
 author: Kwang Yul Seo <kwangyul.seo@gmail.com>
 homepage: https://github.com/kseo/bloom_filter
 
